@@ -1,0 +1,200 @@
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  padding: 30px 0 60px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  margin: 0 0 8px;
+
+  color: var(--color-primary);
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 38px;
+
+  line-height: 1.2;
+}
+
+.header p {
+  margin: 0;
+
+  max-width: 650px;
+
+  color: var(--color-text-secondary);
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.searchSection {
+  margin-bottom: 36px;
+}
+
+.searchSection input {
+  width: 100%;
+
+  max-width: 450px;
+
+  box-sizing: border-box;
+
+  padding: 15px 18px;
+
+  border: 1px solid #d9e2ec;
+
+  border-radius: var(--radius-medium);
+
+  outline: none;
+
+  background: var(--color-surface);
+
+  color: var(--color-text);
+
+  font-size: 15px;
+
+  transition: 0.3s ease;
+}
+
+.searchSection input::placeholder {
+  color: #94a3b8;
+}
+
+.searchSection input:focus {
+  border-color: var(--color-accent);
+
+  box-shadow: 0 0 0 3px rgba(0, 166, 166, 0.12);
+}
+
+
+/* =========================
+   HISTORY GRID
+========================= */
+
+.historyGrid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(280px, 1fr)
+  );
+
+  gap: 24px;
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty {
+  grid-column: 1 / -1;
+
+  text-align: center;
+
+  padding: 70px 20px;
+}
+
+.empty h2 {
+  margin: 0 0 10px;
+
+  color: var(--color-primary);
+
+  font-family: "Poppins", sans-serif;
+}
+
+.empty p {
+  margin: 0;
+
+  color: var(--color-text-secondary);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .container {
+    padding: 25px 30px 50px;
+  }
+
+  .header h1 {
+    font-size: 34px;
+  }
+
+  .historyGrid {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px 16px 40px;
+  }
+
+  .header {
+    margin-bottom: 24px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+  }
+
+  .header p {
+    font-size: 14px;
+
+    line-height: 1.65;
+  }
+
+  .searchSection {
+    margin-bottom: 28px;
+  }
+
+  .searchSection input {
+    max-width: 100%;
+
+    padding: 14px 16px;
+  }
+
+  .historyGrid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .empty {
+    padding: 50px 20px;
+  }
+}

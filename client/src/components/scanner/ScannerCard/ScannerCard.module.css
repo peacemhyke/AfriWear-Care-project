@@ -1,0 +1,376 @@
+.container {
+  width: 100%;
+  max-width: 760px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+/* =======================
+   HEADER
+======================= */
+
+.header {
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  color: var(--color-accent);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.header h1 {
+  margin: 0 0 12px;
+
+  color: var(--color-primary);
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 38px;
+}
+
+.header p {
+  max-width: 580px;
+
+  margin: 0 auto;
+
+  color: var(--color-text-secondary);
+
+  line-height: 1.7;
+}
+
+/* =======================
+   STEP
+======================= */
+
+.step {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  max-width: 420px;
+
+  margin: 0 auto 28px;
+
+  text-align: left;
+}
+
+.stepNumber {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: rgba(0, 166, 166, 0.12);
+
+  color: var(--color-accent);
+
+  font-weight: 700;
+}
+
+.step strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: var(--color-primary);
+}
+
+.step p {
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: 14px;
+}
+
+/* =======================
+   SCANNER
+======================= */
+
+.scanner {
+  width: 320px;
+  height: 320px;
+
+  margin: 0 auto 26px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  background: #f8fafc;
+
+  box-shadow:
+    0 15px 35px rgba(18, 53, 91, 0.08),
+    inset 0 0 0 1px rgba(18, 53, 91, 0.06);
+}
+
+/* =======================
+   SCANNER CORNERS
+======================= */
+
+.cornerTopLeft,
+.cornerTopRight,
+.cornerBottomLeft,
+.cornerBottomRight {
+  position: absolute;
+
+  width: 42px;
+  height: 42px;
+
+  border-color: var(--color-accent);
+
+  z-index: 2;
+}
+
+.cornerTopLeft {
+  top: 28px;
+  left: 28px;
+
+  border-top: 4px solid;
+  border-left: 4px solid;
+
+  border-radius: 12px 0 0 0;
+}
+
+.cornerTopRight {
+  top: 28px;
+  right: 28px;
+
+  border-top: 4px solid;
+  border-right: 4px solid;
+
+  border-radius: 0 12px 0 0;
+}
+
+.cornerBottomLeft {
+  bottom: 28px;
+  left: 28px;
+
+  border-bottom: 4px solid;
+  border-left: 4px solid;
+
+  border-radius: 0 0 0 12px;
+}
+
+.cornerBottomRight {
+  bottom: 28px;
+  right: 28px;
+
+  border-bottom: 4px solid;
+  border-right: 4px solid;
+
+  border-radius: 0 0 12px 0;
+}
+
+/* =======================
+   SCAN LINE
+======================= */
+
+.scanLine {
+  position: absolute;
+
+  left: 32px;
+  right: 32px;
+
+  height: 3px;
+
+  background: var(--color-accent);
+
+  box-shadow: 0 0 12px rgba(0, 166, 166, 0.6);
+
+  animation: scan 2.5s infinite ease-in-out;
+
+  z-index: 3;
+}
+
+/* =======================
+   CENTER
+======================= */
+
+.scannerCenter {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  color: var(--color-text-secondary);
+
+  pointer-events: none;
+}
+
+.scannerCenter svg {
+  color: var(--color-accent);
+}
+
+.scannerCenter span {
+  font-size: 13px;
+}
+
+/* =======================
+   DEMO MESSAGE
+======================= */
+
+.demo {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-bottom: 18px;
+
+  color: var(--color-text-secondary);
+
+  font-size: 14px;
+}
+
+.demo svg {
+  color: var(--color-accent);
+
+  flex-shrink: 0;
+}
+
+/* =======================
+   BUTTON
+======================= */
+
+.button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  min-height: 52px;
+
+  padding: 14px 26px;
+
+  background: var(--color-primary);
+
+  color: white;
+
+  border-radius: var(--radius-medium);
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.button:hover {
+  background: var(--color-accent);
+
+  transform: translateY(-2px);
+}
+
+/* =======================
+   ANIMATION
+======================= */
+
+@keyframes scan {
+  0% {
+    top: 32px;
+  }
+
+  50% {
+    top: calc(100% - 35px);
+  }
+
+  100% {
+    top: 32px;
+  }
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0;
+  }
+
+  .header {
+    margin-bottom: 28px;
+  }
+
+  .header h1 {
+    font-size: 30px;
+  }
+
+  .header p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .step {
+    margin-bottom: 24px;
+  }
+
+  .scanner {
+    width: min(100%, 310px);
+    height: min(310px, 82vw);
+
+    border-radius: 24px;
+  }
+
+  .demo {
+    padding: 0 10px;
+
+    line-height: 1.5;
+  }
+
+  .button {
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+}
+
+/* =======================
+   VERY SMALL PHONES
+======================= */
+
+@media (max-width: 400px) {
+  .header h1 {
+    font-size: 28px;
+  }
+
+  .scanner {
+    height: 280px;
+  }
+}

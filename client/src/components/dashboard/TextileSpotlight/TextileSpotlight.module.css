@@ -1,0 +1,33 @@
+.card {
+  background: linear-gradient(135deg, #12355B, #1F4D7A);
+  color: white;
+  padding: 40px;
+  border-radius: var(--radius-large);
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255,255,255,.15);
+  padding: 8px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.card h2 {
+  margin-bottom: 18px;
+}
+
+.card p {
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.card button {
+  background: var(--color-accent);
+  border: none;
+  color: white;
+  padding: 14px 24px;
+  border-radius: var(--radius-medium);
+  cursor: pointer;
+}

@@ -1,0 +1,525 @@
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 0 60px;
+  box-sizing: border-box;
+}
+
+/* =======================
+   HEADER
+======================= */
+
+.header {
+  margin-bottom: 34px;
+}
+
+.eyebrow {
+  display: inline-block;
+
+  color: var(--color-accent);
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+
+  margin-bottom: 8px;
+}
+
+.header h1 {
+  margin: 0 0 8px;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 38px;
+  line-height: 1.2;
+
+  color: var(--color-primary);
+}
+
+.header p {
+  margin: 0;
+
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* =======================
+   PROFILE CARD
+======================= */
+
+.profileCard {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  padding: 30px;
+
+  background: var(--color-surface);
+
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-large);
+
+  box-shadow: var(--shadow-soft);
+
+  margin-bottom: 42px;
+}
+
+.avatar {
+  width: 82px;
+  height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--color-primary);
+  color: var(--color-white);
+
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profileInfo h2 {
+  margin: 0 0 6px;
+
+  color: var(--color-primary);
+
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+.profileInfo p {
+  margin: 0 0 7px;
+
+  color: var(--color-text);
+  font-size: 15px;
+}
+
+.profileInfo span {
+  color: var(--color-accent);
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =======================
+   SECTIONS
+======================= */
+
+.section {
+  margin-bottom: 42px;
+}
+
+.sectionHeader {
+  margin-bottom: 18px;
+}
+
+.sectionHeader h2 {
+  margin: 0 0 6px;
+
+  color: var(--color-primary);
+
+  font-family: "Poppins", sans-serif;
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.sectionHeader p {
+  margin: 0;
+
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* =======================
+   ACCOUNT INFORMATION
+======================= */
+
+.infoGrid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 16px;
+}
+
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 20px;
+
+  background: var(--color-surface);
+
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-medium);
+
+  transition: 0.25s ease;
+}
+
+.infoCard:hover {
+  border-color: rgba(0, 166, 166, 0.35);
+  transform: translateY(-2px);
+}
+
+.infoCard span {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+.infoCard strong {
+  color: var(--color-text);
+
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* =======================
+   ACTIVITY STATS
+======================= */
+
+.stats {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px;
+}
+
+.statCard {
+  padding: 24px 20px;
+
+  background: var(--color-surface);
+
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-medium);
+
+  text-align: center;
+
+  transition: 0.25s ease;
+}
+
+.statCard:hover {
+  border-color: rgba(0, 166, 166, 0.35);
+  transform: translateY(-2px);
+}
+
+.statCard strong {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: var(--color-primary);
+
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.statCard span {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* =======================
+   PREFERENCES
+======================= */
+
+.preferenceCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 22px;
+
+  background: var(--color-surface);
+
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-medium);
+}
+
+.preferenceCard strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--color-text);
+}
+
+.preferenceCard p {
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* =======================
+   TOGGLE
+======================= */
+
+.toggle {
+  position: relative;
+
+  width: 48px;
+  height: 26px;
+
+  flex-shrink: 0;
+
+  cursor: pointer;
+}
+
+.toggle input {
+  opacity: 0;
+
+  width: 0;
+  height: 0;
+}
+
+.toggle span {
+  position: absolute;
+
+  inset: 0;
+
+  background: #cbd5e1;
+
+  border-radius: 999px;
+
+  transition: 0.3s;
+}
+
+.toggle span::before {
+  content: "";
+
+  position: absolute;
+
+  width: 20px;
+  height: 20px;
+
+  left: 3px;
+  top: 3px;
+
+  background: white;
+
+  border-radius: 50%;
+
+  transition: 0.3s;
+}
+
+.toggle input:checked + span {
+  background: var(--color-accent);
+}
+
+.toggle input:checked + span::before {
+  transform: translateX(22px);
+}
+
+/* =======================
+   TABLET
+======================= */
+
+@media (max-width: 850px) {
+  .container {
+    padding: 14px 0 50px;
+  }
+
+  .header h1 {
+    font-size: 34px;
+  }
+
+  .profileCard {
+    padding: 26px;
+    margin-bottom: 36px;
+  }
+
+  .section {
+    margin-bottom: 36px;
+  }
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    padding: 10px 16px 40px;
+  }
+
+  .header {
+    margin-bottom: 26px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    margin-bottom: 7px;
+  }
+
+  .header h1 {
+    font-size: 29px;
+    margin-bottom: 7px;
+  }
+
+  .header p {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  /* PROFILE */
+
+  .profileCard {
+    gap: 16px;
+
+    padding: 20px;
+
+    margin-bottom: 34px;
+  }
+
+  .avatar {
+    width: 62px;
+    height: 62px;
+
+    font-size: 19px;
+  }
+
+  .profileInfo h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  .profileInfo p {
+    font-size: 13px;
+    line-height: 1.45;
+    margin-bottom: 5px;
+  }
+
+  .profileInfo span {
+    font-size: 12px;
+  }
+
+  /* SECTIONS */
+
+  .section {
+    margin-bottom: 34px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 14px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 19px;
+  }
+
+  .sectionHeader p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* ACCOUNT INFORMATION */
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .infoCard {
+    padding: 17px 18px;
+  }
+
+  /* STATS */
+
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+  }
+
+  .statCard {
+    padding: 18px 10px;
+  }
+
+  .statCard strong {
+    font-size: 25px;
+  }
+
+  .statCard span {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  /* PREFERENCES */
+
+  .preferenceCard {
+    align-items: center;
+
+    padding: 18px;
+
+    gap: 16px;
+  }
+
+  .preferenceCard strong {
+    font-size: 14px;
+  }
+
+  .preferenceCard p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+/* =======================
+   VERY SMALL PHONES
+======================= */
+
+@media (max-width: 400px) {
+  .profileCard {
+    padding: 18px;
+  }
+
+  .avatar {
+    width: 56px;
+    height: 56px;
+
+    font-size: 17px;
+  }
+
+  .profileInfo h2 {
+    font-size: 19px;
+  }
+
+  .profileInfo p {
+    font-size: 12px;
+  }
+
+  .stats {
+    gap: 8px;
+  }
+
+  .statCard {
+    padding: 16px 7px;
+  }
+
+  .statCard strong {
+    font-size: 23px;
+  }
+
+  .statCard span {
+    font-size: 11px;
+  }
+}

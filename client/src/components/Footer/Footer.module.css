@@ -1,0 +1,19 @@
+.footer {
+  padding: 60px;
+  background: var(--color-primary);
+  color: white;
+  text-align: center;
+}
+
+.footer h2 {
+  margin-bottom: 15px;
+}
+
+.footer p {
+  margin-bottom: 20px;
+  opacity: .9;
+}
+
+.footer small {
+  opacity: .7;
+}

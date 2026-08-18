@@ -1,0 +1,263 @@
+.dashboard {
+  display: grid;
+
+  grid-template-columns: 260px 1fr;
+
+  min-height: 100vh;
+
+  background: var(--color-background);
+}
+
+/* ==========================
+   SIDEBAR
+========================== */
+
+.sidebar {
+  background: white;
+
+  border-right: 1px solid #e2e8f0;
+
+  padding: 40px 28px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  position: sticky;
+
+  top: 0;
+
+  height: 100vh;
+
+  box-sizing: border-box;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 40px;
+}
+
+.sidebar h2 {
+  color: var(--color-primary);
+
+  font-family: "Poppins", sans-serif;
+
+  margin: 0;
+
+  font-size: 28px;
+}
+
+/* ==========================
+   MENU BUTTON
+========================== */
+
+.menuButton {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+
+  background: transparent;
+
+  color: var(--color-primary);
+
+  font-size: 26px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================
+   NAVIGATION
+========================== */
+
+.sidebar nav {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.sidebar a,
+.logoutButton {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  text-decoration: none;
+
+  color: var(--color-text);
+
+  font-family: inherit;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  padding: 14px 18px;
+
+  border-radius: var(--radius-medium);
+
+  transition: 0.25s;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+.sidebar a:hover,
+.logoutButton:hover {
+  background: rgba(0, 166, 166, 0.1);
+
+  color: var(--color-primary);
+}
+
+.active {
+  background: var(--color-primary) !important;
+
+  color: white !important;
+
+  font-weight: 600;
+}
+
+/* ==========================
+   LOGOUT
+========================== */
+
+.logoutButton {
+  margin-top: 10px;
+}
+
+/* ==========================
+   CONTENT
+========================== */
+
+.content {
+  min-width: 0;
+
+  padding: 50px;
+
+  overflow-y: auto;
+
+  box-sizing: border-box;
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width: 900px) {
+  .dashboard {
+    display: block;
+  }
+
+  .sidebar {
+    position: sticky;
+
+    top: 0;
+
+    width: 100%;
+
+    height: auto;
+
+    min-height: 0;
+
+    padding: 16px 24px;
+
+    border-right: none;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    z-index: 1000;
+  }
+
+  .sidebarHeader {
+    margin-bottom: 0;
+  }
+
+  .sidebar h2 {
+    font-size: 24px;
+  }
+
+  .menuButton {
+    display: flex;
+  }
+
+  .sidebar nav {
+    display: none;
+
+    padding: 20px 0 8px;
+
+    gap: 8px;
+  }
+
+  .sidebar nav.navOpen {
+    display: flex;
+  }
+
+  .sidebar a,
+  .logoutButton {
+    padding: 13px 16px;
+  }
+
+  .content {
+    padding: 30px 24px;
+  }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 600px) {
+  .sidebar {
+    padding: 13px 16px;
+  }
+
+  .sidebar h2 {
+    font-size: 22px;
+  }
+
+  .menuButton {
+    width: 40px;
+    height: 40px;
+
+    font-size: 24px;
+  }
+
+  .sidebar nav {
+    padding-top: 18px;
+    padding-bottom: 6px;
+  }
+
+  .sidebar a,
+  .logoutButton {
+    font-size: 14px;
+
+    padding: 12px 14px;
+  }
+
+  .content {
+    padding: 24px 16px 40px;
+  }
+}

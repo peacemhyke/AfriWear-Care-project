@@ -1,0 +1,367 @@
+.container {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+
+  box-sizing: border-box;
+
+  background: var(--color-background);
+}
+
+/* =======================
+   CARD
+======================= */
+
+.card {
+  width: 100%;
+  max-width: 520px;
+
+  padding: 48px;
+
+  box-sizing: border-box;
+
+  background: var(--color-surface);
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: var(--radius-large);
+
+  box-shadow: 0 20px 50px rgba(18, 53, 91, 0.08);
+
+  text-align: center;
+}
+
+/* =======================
+   ICON
+======================= */
+
+.icon {
+  width: 58px;
+  height: 58px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: rgba(0, 166, 166, 0.1);
+
+  color: var(--color-accent);
+}
+
+/* =======================
+   HEADER
+======================= */
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: var(--color-accent);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.card h1 {
+  margin: 0 0 12px;
+
+  color: var(--color-primary);
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 32px;
+
+  line-height: 1.2;
+}
+
+.description {
+  max-width: 400px;
+
+  margin: 0 auto 32px;
+
+  color: var(--color-text-secondary);
+
+  line-height: 1.7;
+
+  font-size: 15px;
+}
+
+/* =======================
+   SCANNER
+======================= */
+
+.scanner {
+  width: 220px;
+  height: 180px;
+
+  position: relative;
+
+  margin: 0 auto 32px;
+
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  background: #f8fafc;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(18, 53, 91, 0.06);
+}
+
+/* =======================
+   SCAN CORNERS
+======================= */
+
+.scanner::before,
+.scanner::after {
+  content: "";
+
+  position: absolute;
+
+  width: 36px;
+  height: 36px;
+
+  border-color: var(--color-accent);
+
+  z-index: 2;
+}
+
+.scanner::before {
+  top: 22px;
+  left: 22px;
+
+  border-top: 3px solid;
+  border-left: 3px solid;
+
+  border-radius: 8px 0 0 0;
+}
+
+.scanner::after {
+  bottom: 22px;
+  right: 22px;
+
+  border-bottom: 3px solid;
+  border-right: 3px solid;
+
+  border-radius: 0 0 8px 0;
+}
+
+/* =======================
+   SCAN LINE
+======================= */
+
+.scanLine {
+  position: absolute;
+
+  left: 20px;
+  right: 20px;
+
+  height: 3px;
+
+  background: var(--color-accent);
+
+  box-shadow:
+    0 0 14px rgba(0, 166, 166, 0.65);
+
+  animation: scan 1.8s ease-in-out infinite;
+
+  z-index: 3;
+}
+
+/* =======================
+   SCAN GLOW
+======================= */
+
+.scanGlow {
+  position: absolute;
+
+  left: 20px;
+  right: 20px;
+
+  height: 45px;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 166, 166, 0.12),
+    transparent
+  );
+
+  animation: scanGlow 1.8s ease-in-out infinite;
+
+  z-index: 1;
+}
+
+/* =======================
+   CENTER ICON
+======================= */
+
+.scannerIcon {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: rgba(18, 53, 91, 0.2);
+}
+
+/* =======================
+   STEPS
+======================= */
+
+.steps {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+
+  max-width: 300px;
+
+  margin: 0 auto;
+
+  text-align: left;
+}
+
+.step {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  color: #94a3b8;
+
+  font-size: 14px;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.step svg {
+  flex-shrink: 0;
+
+  color: #cbd5e1;
+
+  transition: color 0.3s ease;
+}
+
+.step.completed {
+  color: var(--color-primary);
+
+  transform: translateX(2px);
+}
+
+.step.completed svg {
+  color: var(--color-accent);
+}
+
+/* =======================
+   FOOTER
+======================= */
+
+.footerText {
+  margin-top: 28px;
+
+  color: var(--color-text-secondary);
+
+  font-size: 13px;
+}
+
+/* =======================
+   ANIMATIONS
+======================= */
+
+@keyframes scan {
+  0% {
+    top: 24px;
+  }
+
+  50% {
+    top: calc(100% - 28px);
+  }
+
+  100% {
+    top: 24px;
+  }
+}
+
+@keyframes scanGlow {
+  0% {
+    top: 15px;
+  }
+
+  50% {
+    top: calc(100% - 55px);
+  }
+
+  100% {
+    top: 15px;
+  }
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media (max-width: 600px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  .card {
+    padding: 34px 24px 32px;
+
+    border-radius: 24px;
+  }
+
+  .card h1 {
+    font-size: 28px;
+  }
+
+  .description {
+    font-size: 14px;
+
+    margin-bottom: 28px;
+  }
+
+  .scanner {
+    width: 210px;
+    height: 170px;
+  }
+}
+
+/* =======================
+   VERY SMALL PHONES
+======================= */
+
+@media (max-width: 400px) {
+  .card {
+    padding: 30px 20px;
+  }
+
+  .card h1 {
+    font-size: 26px;
+  }
+
+  .scanner {
+    width: 190px;
+    height: 160px;
+  }
+}

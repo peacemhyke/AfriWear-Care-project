@@ -1,0 +1,292 @@
+/* =========================
+   MAIN CARD
+========================= */
+
+.card {
+  margin-top: 50px;
+
+  background: var(--color-surface);
+
+  border-radius: var(--radius-large);
+
+  padding: 36px;
+
+  border: 1px solid #e2e8f0;
+
+  box-shadow: 0 15px 35px rgba(18, 53, 91, 0.08);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  margin-bottom: 24px;
+}
+
+.header h2 {
+  margin: 0;
+
+  color: var(--color-primary);
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 24px;
+}
+
+
+/* =========================
+   SLIDE
+========================= */
+
+.slide {
+  position: relative;
+
+  min-height: 180px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 28px;
+
+  background: rgba(0, 166, 166, 0.06);
+
+  border-radius: var(--radius-medium);
+
+  animation: slideIn 0.3s ease;
+}
+
+
+/* Slide number */
+
+.slideNumber {
+  position: absolute;
+
+  top: 20px;
+
+  right: 22px;
+
+  color: rgba(18, 53, 91, 0.2);
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+/* Slide title */
+
+.slide h3 {
+  margin: 0 0 12px;
+
+  color: var(--color-accent);
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 18px;
+}
+
+
+/* Slide content */
+
+.slide p {
+  max-width: 750px;
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  line-height: 1.8;
+
+  font-size: 15px;
+}
+
+.slide strong {
+  color: var(--color-primary);
+
+  font-weight: 600;
+}
+
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 24px;
+
+  margin-top: 24px;
+}
+
+
+/* Arrows */
+
+.arrow {
+  width: 38px;
+
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid #dbe4ee;
+
+  border-radius: 50%;
+
+  background: white;
+
+  color: var(--color-primary);
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.arrow:hover {
+  background: var(--color-primary);
+
+  color: white;
+
+  border-color: var(--color-primary);
+}
+
+
+/* =========================
+   DOTS
+========================= */
+
+.dots {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.dot {
+  width: 7px;
+
+  height: 7px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #cbd5e1;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.activeDot {
+  width: 22px;
+
+  border-radius: 999px;
+
+  background: var(--color-accent);
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+
+    transform: translateX(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateX(0);
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .card {
+    margin-top: 36px;
+
+    padding: 26px 22px;
+  }
+
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+
+  .header h2 {
+    font-size: 21px;
+  }
+
+
+  .slide {
+    min-height: 200px;
+
+    padding: 24px 20px;
+  }
+
+
+  .slideNumber {
+    top: 16px;
+
+    right: 18px;
+  }
+
+
+  .slide h3 {
+    font-size: 16px;
+
+    margin-bottom: 10px;
+  }
+
+
+  .slide p {
+    font-size: 14px;
+
+    line-height: 1.75;
+  }
+
+
+  .controls {
+    margin-top: 20px;
+
+    gap: 20px;
+  }
+
+
+  .arrow {
+    width: 36px;
+
+    height: 36px;
+  }
+}

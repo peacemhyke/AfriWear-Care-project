@@ -1,0 +1,266 @@
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 0 70px;
+  box-sizing: border-box;
+}
+
+/* =======================
+   GARMENT IMAGE
+======================= */
+
+.image {
+  width: 100%;
+  height: 420px;
+
+  object-fit: cover;
+
+  border-radius: var(--radius-large);
+
+  margin-bottom: 30px;
+
+  display: block;
+}
+
+/* =======================
+   GARMENT HEADER
+======================= */
+
+.badge {
+  display: inline-block;
+
+  background: rgba(0, 166, 166, 0.12);
+  color: var(--color-accent);
+
+  padding: 9px 16px;
+
+  border-radius: 999px;
+
+  margin-bottom: 16px;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.container h1 {
+  color: var(--color-primary);
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 38px;
+
+  margin: 0 0 8px;
+}
+
+.qr {
+  color: var(--color-text-secondary);
+
+  font-size: 14px;
+
+  margin: 0 0 42px;
+}
+
+/* =======================
+   CARE SECTION
+======================= */
+
+.careSection {
+  margin-bottom: 55px;
+}
+
+.careSection::before {
+  content: "Garment Care Guide";
+
+  grid-column: 1 / -1;
+
+  display: block;
+
+  color: var(--color-primary);
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  margin-bottom: 2px;
+}
+
+.careSection {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+/* =======================
+   CARE CARD
+======================= */
+
+.careCard {
+  background: var(--color-surface);
+
+  padding: 28px;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: var(--radius-large);
+
+  box-shadow: var(--shadow-soft);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.careCard:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 15px 35px rgba(18, 53, 91, 0.1);
+}
+
+.careCard svg {
+  color: var(--color-accent);
+
+  margin-bottom: 18px;
+}
+
+.careCard h3 {
+  color: var(--color-primary);
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 19px;
+
+  margin: 0 0 10px;
+}
+
+.careCard p {
+  color: var(--color-text);
+
+  font-weight: 600;
+
+  line-height: 1.6;
+
+  margin: 0 0 10px;
+}
+
+.careCard small {
+  display: block;
+
+  color: var(--color-text-secondary);
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+/* =======================
+   TABLET
+======================= */
+
+@media (max-width: 850px) {
+  .container {
+    padding: 25px 30px 60px;
+  }
+
+  .image {
+    height: 360px;
+  }
+
+  .container h1 {
+    font-size: 34px;
+  }
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px 16px 50px;
+  }
+
+  .image {
+    height: 260px;
+
+    border-radius: var(--radius-medium);
+
+    margin-bottom: 22px;
+  }
+
+  .badge {
+    font-size: 13px;
+
+    padding: 8px 14px;
+
+    margin-bottom: 12px;
+  }
+
+  .container h1 {
+    font-size: 28px;
+
+    line-height: 1.2;
+
+    margin-bottom: 7px;
+  }
+
+  .qr {
+    font-size: 13px;
+
+    margin-bottom: 32px;
+  }
+
+  /* Care Guide heading */
+
+  .careSection {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+
+    margin-bottom: 42px;
+  }
+
+  .careSection::before {
+    font-size: 21px;
+
+    margin-bottom: 4px;
+  }
+
+  .careCard {
+    padding: 22px;
+  }
+
+  .careCard svg {
+    margin-bottom: 14px;
+  }
+
+  .careCard h3 {
+    font-size: 18px;
+  }
+}
+
+/* =======================
+   VERY SMALL PHONES
+======================= */
+
+@media (max-width: 400px) {
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .image {
+    height: 230px;
+  }
+
+  .container h1 {
+    font-size: 26px;
+  }
+
+  .careCard {
+    padding: 20px;
+  }
+}

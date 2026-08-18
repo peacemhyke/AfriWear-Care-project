@@ -1,0 +1,151 @@
+.card {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    #1f4d7a
+  );
+
+  color: white;
+  border-radius: var(--radius-large);
+
+  padding: 50px;
+
+  margin-bottom: 40px;
+}
+
+/* =======================
+   SMALL LABEL
+======================= */
+
+.small {
+  opacity: 0.85;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+/* =======================
+   HEADING
+======================= */
+
+.card h1 {
+  font-family: "Poppins", sans-serif;
+
+  font-size: 42px;
+  line-height: 1.2;
+
+  margin: 0 0 22px;
+
+  max-width: 760px;
+}
+
+/* =======================
+   DESCRIPTION
+======================= */
+
+.card p {
+  max-width: 650px;
+
+  line-height: 1.8;
+
+  margin: 0 0 34px;
+}
+
+/* =======================
+   BUTTON
+======================= */
+
+.button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: var(--color-accent);
+  color: white;
+
+  text-decoration: none;
+
+  padding: 15px 28px;
+
+  border-radius: var(--radius-medium);
+
+  font-weight: 600;
+
+  transition: 0.3s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+/* =======================
+   TABLET
+======================= */
+
+@media (max-width: 850px) {
+  .card {
+    padding: 42px;
+  }
+
+  .card h1 {
+    font-size: 38px;
+  }
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media (max-width: 600px) {
+  .card {
+    padding: 34px 28px 36px;
+
+    margin-bottom: 32px;
+  }
+
+  .small {
+    margin-bottom: 12px;
+  }
+
+  .card h1 {
+    font-size: 32px;
+    line-height: 1.2;
+
+    margin-bottom: 24px;
+
+    max-width: 100%;
+  }
+
+  .card p {
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+  }
+
+  .button {
+    width: 100%;
+
+    min-height: 52px;
+
+    box-sizing: border-box;
+  }
+}
+
+/* =======================
+   VERY SMALL PHONES
+======================= */
+
+@media (max-width: 400px) {
+  .card {
+    padding: 30px 24px 32px;
+  }
+
+  .card h1 {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .card p {
+    margin-bottom: 28px;
+  }
+}

@@ -1,0 +1,51 @@
+.textiles {
+  padding: 100px 80px;
+  text-align: center;
+  background: white;
+}
+
+.badge {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(0, 166, 166, 0.12);
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.textiles h2 {
+  color: var(--color-primary);
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.textiles p {
+  max-width: 700px;
+  margin: auto;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: 60px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: var(--color-background);
+  padding: 35px;
+  border-radius: 20px;
+}
+
+.supported {
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.comingSoon {
+  color: #f59e0b;
+  font-weight: 700;
+}
