@@ -1,3 +1,5 @@
 node_modules/
 .env
 *.env
+client/localhost+3-key.pem
+client/localhost+3.pem

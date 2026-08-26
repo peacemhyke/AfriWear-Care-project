@@ -8,12 +8,19 @@ function TextileSpotlight() {
       <h2>Ankara</h2>
 
       <p>
-        Ankara is a vibrant 100% cotton fabric known for its bold
-        prints. Proper washing and drying help preserve its colour
-        and texture for years.
+        Ankara is a vibrant African textile commonly made from
+        cotton and known for its bold colours and distinctive
+        patterns. Proper washing, drying, ironing, and storage
+        help preserve its colour, texture, and shape.
       </p>
 
-      <button>Learn More</button>
+      <div className={styles.tip}>
+        <strong>Care Tip</strong>
+        <span>
+          Follow the recommended care instructions for your
+          specific Ankara garment.
+        </span>
+      </div>
     </section>
   );
 }

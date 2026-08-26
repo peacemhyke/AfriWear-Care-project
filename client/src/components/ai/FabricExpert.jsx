@@ -9,17 +9,40 @@ function FabricExpert({ garment }) {
   const [question, setQuestion] = useState("");
   const [thinking, setThinking] = useState(false);
 
+  const buildInitialResponse = () => {
+    const fabricName = garment?.fabric?.name || "this fabric";
+
+    const careInstructions = garment?.careInstructions || [];
+
+    const washing = careInstructions.find(
+      (item) => item.category?.toLowerCase() === "washing"
+    );
+
+    const drying = careInstructions.find(
+      (item) => item.category?.toLowerCase() === "drying"
+    );
+
+    const ironing = careInstructions.find(
+      (item) => item.category?.toLowerCase() === "ironing"
+    );
+
+    return `Hi! I'm Fabric Expert 👋🏽 This garment uses ${fabricName}. ${
+      washing?.instruction || "Follow the recommended washing instructions."
+    } ${
+      drying?.instruction || "Dry it according to the fabric requirements."
+    } ${
+      ironing?.instruction || "Use the recommended ironing method."
+    } Ask me anything about caring for this garment.`;
+  };
+
   const [messages, setMessages] = useState([
     {
       sender: "Fabric Expert",
-      text: garment.careGuide.aiResponse,
+      text: buildInitialResponse(),
     },
   ]);
 
-  // Keeps track of the chat area
   const chatBoxRef = useRef(null);
-
-  // Keeps track of whether the user is near the bottom
   const isNearBottomRef = useRef(true);
 
   const getResponse = (text) => {
@@ -33,10 +56,7 @@ function FabricExpert({ garment }) {
       return fabricExpertResponses.bleach;
     }
 
-    if (
-      lower.includes("dry") ||
-      lower.includes("sun")
-    ) {
+    if (lower.includes("dry") || lower.includes("sun")) {
       return fabricExpertResponses.dry;
     }
 
@@ -61,7 +81,6 @@ function FabricExpert({ garment }) {
     return fabricExpertResponses.default;
   };
 
-  // Check whether the user is close to the bottom
   const handleScroll = () => {
     const chat = chatBoxRef.current;
 
@@ -75,7 +94,6 @@ function FabricExpert({ garment }) {
     isNearBottomRef.current = distanceFromBottom < 80;
   };
 
-  // Scroll to the newest message
   const scrollToBottom = (smooth = true) => {
     const chat = chatBoxRef.current;
 
@@ -87,7 +105,6 @@ function FabricExpert({ garment }) {
     });
   };
 
-  // Automatically move to new messages
   useEffect(() => {
     if (isNearBottomRef.current) {
       scrollToBottom(true);
@@ -99,8 +116,6 @@ function FabricExpert({ garment }) {
 
     const userQuestion = question.trim();
 
-    // The user is now actively chatting,
-    // so we want to follow the conversation.
     isNearBottomRef.current = true;
 
     setMessages((prev) => [
@@ -129,7 +144,6 @@ function FabricExpert({ garment }) {
 
   return (
     <section className={styles.container}>
-
       <div className={styles.header}>
         <div>
           <h2>Meet Fabric Expert</h2>
@@ -196,7 +210,6 @@ function FabricExpert({ garment }) {
           <Send size={18} />
         </button>
       </div>
-
     </section>
   );
 }

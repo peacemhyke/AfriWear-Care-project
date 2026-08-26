@@ -12,24 +12,56 @@ import Garment from "../pages/Garment/Garment";
 
 import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
 import LoadingScan from "../pages/LoadingScan/LoadingScan";
+import ProtectedRoute from "../components/ProtectedRoute";
+import TestQR from "../pages/TestQR/TestQR";
 
 function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
+
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/about" element={<About />} />
+        <Route path="/test-qr" element={<TestQR />} />
 
-        <Route element={<DashboardLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/scan" element={<Scan />} />
-          <Route path="/loading" element={<LoadingScan />} />
-          <Route path="/garment/:id" element={<Garment />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/profile" element={<Profile />} />
+        <Route element={<ProtectedRoute />}>
+          <Route element={<DashboardLayout />}>
+
+            <Route
+              path="/dashboard"
+              element={<Dashboard />}
+            />
+
+            <Route
+              path="/scan"
+              element={<Scan />}
+            />
+
+            <Route
+              path="/loading"
+              element={<LoadingScan />}
+            />
+
+            <Route
+              path="/garment/:id"
+              element={<Garment />}
+            />
+
+            <Route
+              path="/history"
+              element={<History />}
+            />
+
+            <Route
+              path="/profile"
+              element={<Profile />}
+            />
+
+          </Route>
         </Route>
+
       </Routes>
     </BrowserRouter>
   );

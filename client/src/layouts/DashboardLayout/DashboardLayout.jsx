@@ -12,9 +12,12 @@ function DashboardLayout() {
   };
 
   const handleLogout = () => {
-    setMenuOpen(false);
-    navigate("/");
-  };
+  localStorage.removeItem("token");
+
+  setMenuOpen(false);
+
+  navigate("/login");
+};
 
   return (
     <div className={styles.dashboard}>

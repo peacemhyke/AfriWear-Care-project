@@ -1,33 +1,97 @@
 .card {
   background: linear-gradient(135deg, #12355B, #1F4D7A);
   color: white;
+
   padding: 40px;
+
   border-radius: var(--radius-large);
+
+  box-shadow: 0 12px 30px rgba(18, 53, 91, 0.12);
 }
 
 .badge {
   display: inline-block;
-  background: rgba(255,255,255,.15);
+
+  background: rgba(255, 255, 255, 0.15);
+
   padding: 8px 14px;
+
   border-radius: 999px;
+
   margin-bottom: 20px;
+
   font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .card h2 {
-  margin-bottom: 18px;
+  margin: 0 0 18px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 30px;
 }
 
 .card p {
+  max-width: 760px;
+
   line-height: 1.8;
-  margin-bottom: 24px;
+
+  margin: 0 0 24px;
+
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.card button {
-  background: var(--color-accent);
-  border: none;
+.tip {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  max-width: 600px;
+
+  padding: 18px 20px;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  border-left: 3px solid var(--color-accent);
+
+  border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
+}
+
+.tip strong {
+  font-size: 14px;
+
   color: white;
-  padding: 14px 24px;
-  border-radius: var(--radius-medium);
-  cursor: pointer;
+}
+
+.tip span {
+  color: rgba(255, 255, 255, 0.85);
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media (max-width: 600px) {
+  .card {
+    padding: 28px 22px;
+  }
+
+  .card h2 {
+    font-size: 26px;
+  }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .tip {
+    padding: 16px;
+  }
 }

@@ -7,10 +7,18 @@ import { APP } from "../../config/app";
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <nav className={styles.navbar}>
 
-      <Link to="/" className={styles.logo}>
+      <Link
+        to="/"
+        className={styles.logo}
+        onClick={closeMenu}
+      >
         {APP.name}
       </Link>
 
@@ -23,62 +31,64 @@ function Navbar() {
       </button>
 
       <ul
-        className={`${styles.links} ${
-          menuOpen ? styles.open : ""
-        }`}
+        className={
+          menuOpen
+            ? styles.links + " " + styles.open
+            : styles.links
+        }
       >
         <li>
-          <a
-            href="#features"
-            onClick={() => setMenuOpen(false)}
-          >
+          <a href="#features" onClick={closeMenu}>
             Features
           </a>
         </li>
 
         <li>
-          <a
-            href="#how-it-works"
-            onClick={() => setMenuOpen(false)}
-          >
+          <a href="#how-it-works" onClick={closeMenu}>
             How It Works
           </a>
         </li>
 
         <li>
-          <a
-            href="#textiles"
-            onClick={() => setMenuOpen(false)}
-          >
+          <a href="#textiles" onClick={closeMenu}>
             African Textiles
           </a>
         </li>
 
         <li>
-          <Link
-            to="/about"
-            onClick={() => setMenuOpen(false)}
-          >
+          <Link to="/about" onClick={closeMenu}>
             About
           </Link>
         </li>
 
+        <li className={styles.mobileLogin}>
+          <Link to="/login" onClick={closeMenu}>
+            Log In
+          </Link>
+        </li>
+
         <li className={styles.mobileScan}>
-          <Link
-            to="/scan"
-            onClick={() => setMenuOpen(false)}
-          >
+          <Link to="/scan" onClick={closeMenu}>
             Scan Your Garment
           </Link>
         </li>
       </ul>
 
-      <Link
-        to="/scan"
-        className={styles.scanButton}
-      >
-        Scan Your Garment
-      </Link>
+      <div className={styles.actions}>
+        <Link
+          to="/login"
+          className={styles.loginButton}
+        >
+          Log In
+        </Link>
+
+        <Link
+          to="/scan"
+          className={styles.scanButton}
+        >
+          Scan Your Garment
+        </Link>
+      </div>
 
     </nav>
   );

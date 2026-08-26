@@ -45,6 +45,11 @@
   color: var(--color-primary);
   margin-bottom: 8px;
 }
+.fabricName {
+  font-size: 24px !important;
+  text-align: center;
+  word-break: break-word;
+}
 
 .card p {
   color: var(--color-text-secondary);

@@ -4,35 +4,43 @@ import styles from "./FabricWisdom.module.css";
 function FabricWisdom({ garment }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const garmentName =
+    garment?.garment?.name || "this garment";
+
+  const fabricName =
+    garment?.fabric?.name || "African textile";
+
   const slides = [
     {
       title: "Did You Know?",
       content: (
         <>
-          Your <strong>{garment.garment}</strong> is made from{" "}
-          <strong>{garment.fabric}</strong>. Washing it inside out
+          Your <strong>{garmentName}</strong> is made from{" "}
+          <strong>{fabricName}</strong>. Washing it inside out
           with cold water helps preserve its colours and keeps the
           fabric looking vibrant for much longer.
         </>
       ),
     },
+
     {
       title: "Textile Story",
       content: (
         <>
-          Ankara has become one of Africa's most recognizable
-          fabrics. It is worn during celebrations, ceremonies and
-          everyday life across many countries.
+          {fabricName} is part of Africa's rich textile culture,
+          carrying stories of identity, creativity, celebration
+          and everyday life.
         </>
       ),
     },
+
     {
       title: "Fabric Expert Tip",
       content: (
         <>
-          Fold your Ankara garments instead of hanging heavy pieces
-          for long periods. This can help them maintain their shape
-          over time.
+          Care for your {fabricName} garment gently. Avoid harsh
+          treatment and follow the recommended care instructions
+          to help preserve its appearance and lifespan.
         </>
       ),
     },

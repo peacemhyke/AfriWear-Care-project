@@ -198,3 +198,62 @@
     padding: 50px 20px;
   }
 }
+/* =========================
+   CLEAR HISTORY BUTTON
+========================= */
+
+.clearButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 11px 16px;
+
+  background: transparent;
+  color: #dc2626;
+
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-medium);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.clearButton:hover {
+  background: #fef2f2;
+  border-color: #fca5a5;
+
+  transform: translateY(-1px);
+}
+
+.clearButton:active {
+  transform: translateY(0);
+}
+
+.clearButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 600px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .clearButton {
+    width: 100%;
+  }
+}

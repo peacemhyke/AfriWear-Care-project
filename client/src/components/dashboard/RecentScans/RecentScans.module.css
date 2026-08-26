@@ -1,20 +1,70 @@
 .card {
   background: white;
+
   padding: 30px;
+
   border-radius: var(--radius-large);
-  box-shadow: 0 8px 20px rgba(18,53,91,.06);
+
+  box-shadow: 0 8px 20px rgba(18, 53, 91, 0.06);
+
   margin-bottom: 40px;
 }
 
-.card h2 {
-  color: var(--color-primary);
+/* =======================
+   HEADER
+======================= */
+
+.header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
   margin-bottom: 24px;
 }
 
+.header h2 {
+  color: var(--color-primary);
+
+  font-family: "Poppins", sans-serif;
+
+  margin: 0 0 6px;
+}
+
+.header p {
+  color: var(--color-text-secondary);
+
+  margin: 0;
+
+  font-size: 14px;
+}
+
+/* =======================
+   LIST
+======================= */
+
+.list {
+  display: flex;
+
+  flex-direction: column;
+}
+
+/* =======================
+   ITEM
+======================= */
+
 .item {
   display: flex;
+
   justify-content: space-between;
+
+  align-items: center;
+
+  gap: 20px;
+
   padding: 18px 0;
+
   border-bottom: 1px solid #e5e7eb;
 }
 
@@ -22,11 +72,78 @@
   border-bottom: none;
 }
 
-.item h4 {
-  margin-bottom: 6px;
+/* =======================
+   DETAILS
+======================= */
+
+.details {
+  min-width: 0;
 }
 
-.item p,
-.item span {
+.details h4 {
+  color: var(--color-primary);
+
+  margin: 0 0 6px;
+
+  font-size: 16px;
+}
+
+.details p {
   color: var(--color-text-secondary);
+
+  margin: 0;
+
+  font-size: 14px;
+}
+
+/* =======================
+   DATE
+======================= */
+
+.date {
+  color: var(--color-text-secondary);
+
+  font-size: 13px;
+
+  white-space: nowrap;
+}
+
+/* =======================
+   EMPTY / LOADING
+======================= */
+
+.empty {
+  padding: 35px 10px;
+
+  text-align: center;
+}
+
+.empty p {
+  color: var(--color-text-secondary);
+
+  margin: 0;
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media (max-width: 600px) {
+  .card {
+    padding: 22px;
+
+    margin-bottom: 30px;
+  }
+
+  .item {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .date {
+    font-size: 12px;
+  }
 }

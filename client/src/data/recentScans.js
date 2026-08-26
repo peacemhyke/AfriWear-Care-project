@@ -1,7 +1,7 @@
 export const recentScans = [
   {
     id: 1,
-    qrCode: "ANK001",
+    qrCode: "bd950a877808da606836a6570dca7f96",
     garment: "Ankara Maxi Dress",
     fabric: "100% Cotton",
     image: "/images/ankara-dress.jpg",
