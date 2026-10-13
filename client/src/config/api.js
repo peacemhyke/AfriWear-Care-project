@@ -1,3 +1,3 @@
-const API_URL = "http://172.20.10.2:5000/api";
+const API_URL = "https://afri-wear-care-project.vercel.app/api";
 
 export default API_URL;

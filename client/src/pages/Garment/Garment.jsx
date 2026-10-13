@@ -101,7 +101,7 @@ const dry = getCareInstruction("dry");
 const iron = getCareInstruction("iron");
 const storage = getCareInstruction("storage");
 
-const qrUrl = `http://172.20.10.2:5173/garment/${id}`;
+const qrUrl = `https://afriwear-care.vercel.app/garment/${id}`;
 
 const displayGarment = {
 ...garmentInfo,
