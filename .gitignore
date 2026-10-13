@@ -6,3 +6,4 @@ client/localhost+3.pem
 
 afriwear_care_backup.sql
 test login.txt
+server/.env.local

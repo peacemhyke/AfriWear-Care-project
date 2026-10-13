@@ -6,6 +6,7 @@ import authRoutes from "./routes/authRoutes.js";
 import garmentRoutes from "./routes/garmentRoutes.js";
 import qrRoutes from "./routes/qrRoutes.js";
 import historyRoutes from "./routes/historyRoutes.js";
+import { seedDatabase } from "./config/seed.js";
 
 dotenv.config();
 
@@ -30,7 +31,12 @@ app.get("/", (req, res) => {
   });
 });
 
-// Start server
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`AfriWear Care API running on port ${PORT}`);
-});
+// Start db before server
+async function startServer() {
+  await seedDatabase();
+  app.listen(PORT, () => {
+    console.log(`AfriWear Care API running on port ${PORT}`);
+  });
+}
+
+startServer();
