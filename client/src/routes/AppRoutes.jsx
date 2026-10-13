@@ -9,6 +9,7 @@ import History from "../pages/History/History";
 import Profile from "../pages/Profile/Profile";
 import About from "../pages/About/About";
 import Garment from "../pages/Garment/Garment";
+import DesignerDashboard from "../pages/DesignerDashboard/DesignerDashboard";
 
 import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
 import LoadingScan from "../pages/LoadingScan/LoadingScan";
@@ -32,6 +33,10 @@ function AppRoutes() {
             <Route
               path="/dashboard"
               element={<Dashboard />}
+            />
+            <Route
+              path="/designer-dashboard"
+              element={<DesignerDashboard />}
             />
 
             <Route

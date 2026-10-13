@@ -3,3 +3,6 @@ node_modules/
 *.env
 client/localhost+3-key.pem
 client/localhost+3.pem
+
+afriwear_care_backup.sql
+test login.txt

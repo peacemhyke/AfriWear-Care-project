@@ -1,0 +1,200 @@
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  color: #00a6a6;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.header h1 {
+  color: #12355b;
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+.header p {
+  color: #64748b;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.primaryButton,
+.secondaryButton {
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.primaryButton {
+  background: #12355b;
+  color: #ffffff;
+}
+
+.primaryButton:hover {
+  background: #0d2946;
+}
+
+.secondaryButton {
+  background: #e6f7f7;
+  color: #12355b;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.statCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.statCard span {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.statCard strong {
+  display: block;
+  color: #12355b;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sectionHeader h2 {
+  color: #12355b;
+  margin-bottom: 0.4rem;
+}
+
+.sectionHeader p {
+  color: #64748b;
+  margin: 0;
+}
+
+.profileCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.logoPlaceholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #12355b;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.profileCard h3 {
+  color: #12355b;
+  margin: 0 0 0.4rem;
+}
+
+.profileCard p {
+  color: #64748b;
+  margin: 0;
+}
+
+.emptyState {
+  text-align: center;
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 3rem 1.5rem;
+}
+
+.emptyState h3 {
+  color: #12355b;
+}
+
+.emptyState p {
+  color: #64748b;
+  margin-bottom: 1.5rem;
+}
+
+.futureCard {
+  background: #f0fdfa;
+  border: 1px solid #ccfbf1;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.futureCard span {
+  color: #00a6a6;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.futureCard h2 {
+  color: #12355b;
+  margin: 0.6rem 0;
+}
+
+.futureCard p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .primaryButton {
+    width: 100%;
+  }
+}
