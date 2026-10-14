@@ -32,7 +32,7 @@ function Navbar() {
         {menuOpen ? "✕" : "☰"}
       </button>
 
-      // mobile menu
+      {/* mobile menu */}
       <ul
         className={
           menuOpen
@@ -84,7 +84,7 @@ function Navbar() {
         </li>
       </ul>
 
-      // desktop
+      {/* desktop */}
       <div className={styles.actions}>
 
         {
