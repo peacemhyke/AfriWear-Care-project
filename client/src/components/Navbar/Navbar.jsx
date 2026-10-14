@@ -32,6 +32,7 @@ function Navbar() {
         {menuOpen ? "✕" : "☰"}
       </button>
 
+      // mobile menu
       <ul
         className={
           menuOpen
@@ -83,13 +84,24 @@ function Navbar() {
         </li>
       </ul>
 
+      // desktop
       <div className={styles.actions}>
-        <Link
-          to="/login"
-          className={styles.loginButton}
-        >
-          Log In
-        </Link>
+
+        {
+          !token ?
+            <Link
+              to="/login"
+              className={styles.loginButton}
+            >
+              Log In
+            </Link> :
+            <Link
+              to="/dashboard"
+              className={styles.scanButton}
+            >
+              Dashboard
+            </Link>
+        }
 
         <Link
           to="/scan"
