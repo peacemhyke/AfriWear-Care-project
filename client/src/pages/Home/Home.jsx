@@ -7,6 +7,7 @@ import HowItWorks from "../../components/HowItWorks/HowItWorks";
 import Footer from "../../components/Footer/Footer";
 
 function Home() {
+
   return (
     <>
       <Navbar />

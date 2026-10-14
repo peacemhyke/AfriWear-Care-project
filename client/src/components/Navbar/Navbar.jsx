@@ -7,6 +7,8 @@ import { APP } from "../../config/app";
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const token = localStorage.getItem("token");
+
   const closeMenu = () => {
     setMenuOpen(false);
   };
@@ -61,12 +63,19 @@ function Navbar() {
           </Link>
         </li>
 
-        <li className={styles.mobileLogin}>
-          <Link to="/login" onClick={closeMenu}>
-            Log In
-          </Link>
-        </li>
-
+        {
+          !token ?
+            <li className={styles.mobileLogin}>
+              <Link to="/login" onClick={closeMenu}>
+                Log In
+              </Link>
+            </li> :
+            <li className={styles.mobileScan}>
+              <Link to="/dashboard" onClick={closeMenu}>
+                Dashboard
+              </Link>
+            </li>
+        }
         <li className={styles.mobileScan}>
           <Link to="/scan" onClick={closeMenu}>
             Scan Your Garment
