@@ -2,49 +2,86 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import pool from "../config/db.js";
 
+
 export const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
+    // Consumers are the default account type.
+    // Public registration is only allowed for USER or DESIGNER.
+    const requestedRole = req.body.role || "USER";
+    const role = String(requestedRole).toUpperCase();
+
     // Validate required fields
-    if (!name || !email || !password) {
+    if (
+      typeof name !== "string" ||
+      !name.trim() ||
+      typeof email !== "string" ||
+      !email.trim() ||
+      typeof password !== "string" ||
+      !password
+    ) {
       return res.status(400).json({
-        message: "Name, email and password are required",
+        message: "Name, email and password are required.",
       });
     }
 
-    // Check if email already exists
+    // Validate password length
+    if (password.length < 8) {
+      return res.status(400).json({
+        message: "Password must be at least 8 characters long.",
+      });
+    }
+
+    // Never allow public admin registration
+    if (!["USER", "DESIGNER"].includes(role)) {
+      return res.status(400).json({
+        message: "Invalid account type. Choose Consumer or Designer.",
+      });
+    }
+
+    const cleanName = name.trim();
+    const cleanEmail = email.trim().toLowerCase();
+
+    // Check whether the email already exists
     const existingUser = await pool.query(
       "SELECT id FROM users WHERE email = $1",
-      [email]
+      [cleanEmail]
     );
 
     if (existingUser.rows.length > 0) {
       return res.status(409).json({
-        message: "Email already registered",
+        message: "Email already registered. Please log in instead.",
       });
     }
 
-    // Hash password
+    // Hash the password before saving it
     const passwordHash = await bcrypt.hash(password, 10);
 
-    // Save user to database
+    // Save the selected role along with the new user
     const result = await pool.query(
-      `INSERT INTO users (name, email, password_hash)
-       VALUES ($1, $2, $3)
+      `INSERT INTO users (name, email, password_hash, role)
+       VALUES ($1, $2, $3, $4)
        RETURNING id, name, email, role, created_at`,
-      [name, email, passwordHash]
+      [cleanName, cleanEmail, passwordHash, role]
     );
 
-    res.status(201).json({
+    return res.status(201).json({
       message: "Registration successful",
       user: result.rows[0],
     });
   } catch (error) {
+    // Handle duplicate emails safely, including concurrent requests
+    if (error.code === "23505") {
+      return res.status(409).json({
+        message: "Email already registered. Please log in instead.",
+      });
+    }
+
     console.error("Registration error:", error.message);
 
-    res.status(500).json({
-      message: "Registration failed",
+    return res.status(500).json({
+      message: "Registration failed. Please try again.",
     });
   }
 };
