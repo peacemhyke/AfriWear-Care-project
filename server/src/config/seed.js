@@ -72,7 +72,17 @@ const seedUsersDb = async ()=> {
         CONSTRAINT users_role_check CHECK (role::text = ANY (ARRAY['USER'::character varying, 'DESIGNER'::character varying, 'ADMIN'::character varying]::text[]))
     )`,
     );
+    
+    // Add designer profile fields to existing databases.
+    await pool.query(`
+        ALTER TABLE public.users
+        ADD COLUMN IF NOT EXISTS brand_name VARCHAR(150),
+        ADD COLUMN IF NOT EXISTS phone_number VARCHAR(30),
+        ADD COLUMN IF NOT EXISTS city VARCHAR(100),
+        ADD COLUMN IF NOT EXISTS state VARCHAR(100);
+    `);
 }
+
 
 const seedGarmentsDb = async ()=> {
     await ensureSequence("garments");

@@ -1,21 +1,25 @@
 
 .page {
   min-height: 100vh;
+  box-sizing: border-box;
   padding: 40px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f4f8fb;
+  background:
+    radial-gradient(ellipse at top left, rgba(0, 166, 166, 0.09), transparent 38%),
+    #f4f8fb;
 }
 
 .card {
   width: 100%;
-  max-width: 560px;
+  max-width: 600px;
+  box-sizing: border-box;
   padding: 36px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 20px;
-  box-shadow: 0 16px 48px rgba(18, 53, 91, 0.08);
+  border-radius: 22px;
+  box-shadow: 0 20px 60px rgba(18, 53, 91, 0.09);
 }
 
 .brand {
@@ -25,7 +29,7 @@
   color: #12355b;
   text-decoration: none;
   font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .brand strong {
@@ -33,37 +37,40 @@
 }
 
 .brandMark {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
-  border-radius: 12px;
+  border-radius: 13px;
   background: #12355b;
   color: #ffffff;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 800;
 }
 
 .heading {
-  margin: 30px 0 24px;
+  margin: 28px 0 26px;
 }
 
 .eyebrow {
   color: #008c8c;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
 }
 
 .heading h1 {
-  margin: 10px 0;
+  margin: 9px 0 10px;
   color: #12355b;
-  font-size: clamp(1.7rem, 4vw, 2.1rem);
+  font-size: clamp(1.75rem, 4vw, 2.15rem);
+  letter-spacing: -0.04em;
 }
 
 .heading p {
   margin: 0;
   color: #64748b;
-  line-height: 1.65;
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
 .form {
@@ -79,15 +86,21 @@
 }
 
 .roleFieldset legend {
-  margin-bottom: 12px;
   color: #12355b;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.roleHint {
+  margin: 7px 0 14px;
+  color: #64748b;
+  font-size: 0.84rem;
+  line-height: 1.5;
 }
 
 .roleOptions {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -96,41 +109,112 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
-  padding: 16px;
-  border: 1px solid #dbe4ec;
-  border-radius: 12px;
+  min-width: 0;
+  padding: 17px 15px 14px;
+  border: 1.5px solid #dbe4ec;
+  border-radius: 14px;
+  background: #ffffff;
   cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.roleOption:hover {
+  border-color: #70c9c9;
+  transform: translateY(-1px);
+}
+
+.roleOption:focus-within {
+  outline: 3px solid rgba(0, 166, 166, 0.18);
+  outline-offset: 2px;
 }
 
 .roleOption input {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 17px;
+  right: 15px;
+  width: 17px;
+  height: 17px;
+  margin: 0;
   accent-color: #008c8c;
+  cursor: pointer;
 }
 
 .roleOption.selected {
   border-color: #00a6a6;
   background: #f0fdfa;
+  box-shadow: 0 0 0 2px rgba(0, 166, 166, 0.08);
 }
 
 .roleIcon {
-  color: #008c8c;
-  font-size: 1.5rem;
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  margin-bottom: 13px;
+  border-radius: 12px;
+  background: #eef4fa;
+  font-size: 1.35rem;
 }
 
-.roleOption strong {
-  padding-right: 8px;
+.selected .roleIcon {
+  background: #d7f5f0;
+}
+
+.roleTitle {
+  padding-right: 22px;
+  color: #12355b;
+  font-size: 0.98rem;
+  font-weight: 750;
+}
+
+.roleDescription {
+  margin-top: 7px;
+  color: #475569;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.roleFeatures {
+  margin-top: 12px;
+  color: #64748b;
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.selection {
+  margin-top: 15px;
+  padding: 6px 9px;
+  border-radius: 7px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.73rem;
+  font-weight: 700;
+}
+
+.selected .selection {
+  background: #ccfbf1;
+  color: #006b65;
+}
+
+.formDivider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 2px 0 0;
   color: #12355b;
   font-size: 0.9rem;
+  font-weight: 700;
 }
 
-.roleOption > span:last-child {
-  color: #64748b;
-  font-size: 0.8rem;
-  line-height: 1.5;
+.formDivider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: #e2e8f0;
 }
 
 .field {
@@ -140,8 +224,8 @@
 
 .field > span {
   color: #12355b;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.87rem;
+  font-weight: 650;
 }
 
 .field input {
@@ -154,6 +238,12 @@
   background: #ffffff;
   color: #12355b;
   font: inherit;
+  font-size: 0.92rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input::placeholder {
+  color: #94a3b8;
 }
 
 .field input:focus {
@@ -161,20 +251,32 @@
   box-shadow: 0 0 0 3px rgba(0, 166, 166, 0.12);
 }
 
+.field small {
+  color: #64748b;
+  font-size: 0.76rem;
+}
+
 .submitButton {
   width: 100%;
-  padding: 14px;
+  padding: 14px 16px;
   border: 0;
-  border-radius: 9px;
+  border-radius: 10px;
   background: #12355b;
   color: #ffffff;
   font: inherit;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.submitButton:hover {
+.submitButton:hover:not(:disabled) {
   background: #0d2946;
+  transform: translateY(-1px);
+}
+
+.submitButton:focus-visible {
+  outline: 3px solid rgba(0, 166, 166, 0.35);
+  outline-offset: 3px;
 }
 
 .submitButton:disabled {
@@ -186,7 +288,7 @@
   margin: 0;
   padding: 12px;
   border-radius: 8px;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   line-height: 1.5;
 }
 
@@ -204,35 +306,55 @@
   margin: 24px 0 0;
   text-align: center;
   color: #64748b;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
 .loginPrompt a {
   color: #008c8c;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
 }
 
-.footer {
-  margin: 20px 0 0;
-  color: #94a3b8;
-  text-align: center;
-  font-size: 0.75rem;
-  line-height: 1.5;
+.loginPrompt a:hover {
+  text-decoration: underline;
 }
 
-@media (max-width: 480px) {
+.footer {
+  margin: 18px 0 0;
+  color: #94a3b8;
+  text-align: center;
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 520px) {
   .page {
     padding: 20px 12px;
     align-items: flex-start;
   }
 
   .card {
-    padding: 24px 18px;
-    border-radius: 14px;
+    padding: 25px 18px;
+    border-radius: 16px;
+  }
+
+  .heading {
+    margin: 24px 0;
   }
 
   .roleOptions {
     grid-template-columns: 1fr;
+  }
+
+  .roleOption {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roleOption,
+  .field input,
+  .submitButton {
+    transition: none;
   }
 }

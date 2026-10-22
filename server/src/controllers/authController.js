@@ -5,14 +5,19 @@ import pool from "../config/db.js";
 
 export const register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const {
+      name,
+      email,
+      password,
+      brandName,
+      phoneNumber,
+      city,
+      state,
+    } = req.body;
 
-    // Consumers are the default account type.
-    // Public registration is only allowed for USER or DESIGNER.
     const requestedRole = req.body.role || "USER";
     const role = String(requestedRole).toUpperCase();
 
-    // Validate required fields
     if (
       typeof name !== "string" ||
       !name.trim() ||
@@ -26,24 +31,67 @@ export const register = async (req, res) => {
       });
     }
 
-    // Validate password length
     if (password.length < 8) {
       return res.status(400).json({
         message: "Password must be at least 8 characters long.",
       });
     }
 
-    // Never allow public admin registration
     if (!["USER", "DESIGNER"].includes(role)) {
       return res.status(400).json({
-        message: "Invalid account type. Choose Consumer or Designer.",
+        message: "Invalid account type. Choose User or Designer.",
       });
     }
 
     const cleanName = name.trim();
     const cleanEmail = email.trim().toLowerCase();
 
-    // Check whether the email already exists
+    let cleanBrandName = null;
+    let cleanPhoneNumber = null;
+    let cleanCity = null;
+    let cleanState = null;
+
+    if (role === "DESIGNER") {
+      if (
+        typeof brandName !== "string" ||
+        !brandName.trim() ||
+        typeof city !== "string" ||
+        !city.trim() ||
+        typeof state !== "string" ||
+        !state.trim()
+      ) {
+        return res.status(400).json({
+          message:
+            "Brand name, city and state are required for designer registration.",
+        });
+      }
+
+      if (
+        phoneNumber != null &&
+        typeof phoneNumber !== "string"
+      ) {
+        return res.status(400).json({
+          message: "Phone number must be valid text.",
+        });
+      }
+
+      cleanBrandName = brandName.trim();
+      cleanCity = city.trim();
+      cleanState = state.trim();
+      cleanPhoneNumber = phoneNumber?.trim() || null;
+
+      if (
+        cleanBrandName.length > 150 ||
+        cleanCity.length > 100 ||
+        cleanState.length > 100 ||
+        (cleanPhoneNumber && cleanPhoneNumber.length > 30)
+      ) {
+        return res.status(400).json({
+          message: "One or more designer profile fields are too long.",
+        });
+      }
+    }
+
     const existingUser = await pool.query(
       "SELECT id FROM users WHERE email = $1",
       [cleanEmail]
@@ -55,15 +103,33 @@ export const register = async (req, res) => {
       });
     }
 
-    // Hash the password before saving it
     const passwordHash = await bcrypt.hash(password, 10);
 
-    // Save the selected role along with the new user
     const result = await pool.query(
-      `INSERT INTO users (name, email, password_hash, role)
-       VALUES ($1, $2, $3, $4)
-       RETURNING id, name, email, role, created_at`,
-      [cleanName, cleanEmail, passwordHash, role]
+      `INSERT INTO users (
+        name,
+        email,
+        password_hash,
+        role,
+        brand_name,
+        phone_number,
+        city,
+        state
+      )
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+      RETURNING
+        id, name, email, role, brand_name,
+        phone_number, city, state, created_at`,
+      [
+        cleanName,
+        cleanEmail,
+        passwordHash,
+        role,
+        cleanBrandName,
+        cleanPhoneNumber,
+        cleanCity,
+        cleanState,
+      ]
     );
 
     return res.status(201).json({
@@ -71,7 +137,6 @@ export const register = async (req, res) => {
       user: result.rows[0],
     });
   } catch (error) {
-    // Handle duplicate emails safely, including concurrent requests
     if (error.code === "23505") {
       return res.status(409).json({
         message: "Email already registered. Please log in instead.",
@@ -154,10 +219,15 @@ export const login = async (req, res) => {
 };
 export const getMe = async (req, res) => {
   try {
-    const result = await pool.query(
-      "SELECT id, name, email, role, created_at FROM users WHERE id = $1",
-      [req.user.userId]
-    );
+    
+const result = await pool.query(
+  `SELECT
+     id, name, email, role, brand_name,
+     phone_number, city, state, created_at
+   FROM users
+   WHERE id = $1`,
+  [req.user.userId]
+);
 
     if (result.rows.length === 0) {
       return res.status(404).json({

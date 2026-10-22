@@ -13,6 +13,10 @@ function Signup() {
     password: "",
     confirmPassword: "",
     role: "USER",
+    brandName: "",
+    phoneNumber: "",
+    city: "",
+    state: "",
   });
 
   const [message, setMessage] = useState("");
@@ -46,6 +50,17 @@ function Signup() {
       return;
     }
 
+    if (
+      formData.role === "DESIGNER" &&
+      (!formData.brandName.trim() ||
+        !formData.city.trim() ||
+        !formData.state.trim())
+    ) {
+      setMessage("Please enter your brand name, city, and state.");
+      setMessageType("error");
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -59,6 +74,12 @@ function Signup() {
           email: formData.email.trim(),
           password: formData.password,
           role: formData.role,
+          ...(formData.role === "DESIGNER" && {
+            brandName: formData.brandName.trim(),
+            phoneNumber: formData.phoneNumber.trim(),
+            city: formData.city.trim(),
+            state: formData.state.trim(),
+          }),
         }),
       });
 
@@ -68,16 +89,15 @@ function Signup() {
         throw new Error(data.message || "Registration failed.");
       }
 
-      setMessage("Account created successfully! Redirecting to login...");
-      setMessageType("success");
-
       navigate("/login", {
         state: {
           message: "Account created successfully. Please log in.",
         },
       });
     } catch (error) {
-      setMessage(error.message || "Something went wrong. Please try again.");
+      setMessage(
+        error.message || "Something went wrong. Please try again."
+      );
       setMessageType("error");
     } finally {
       setLoading(false);
@@ -89,21 +109,30 @@ function Signup() {
       <section className={styles.card}>
         <Link to="/" className={styles.brand}>
           <span className={styles.brandMark}>A</span>
-          <span>AfriWear <strong>Care</strong></span>
+          <span>
+            AfriWear <strong>Care</strong>
+          </span>
         </Link>
 
         <div className={styles.heading}>
-          <span className={styles.eyebrow}>JOIN OUR COMMUNITY</span>
+          <span className={styles.eyebrow}>
+            CARE FOR WHAT YOU WEAR
+          </span>
           <h1>Create your account</h1>
           <p>
-            Discover better ways to care for African textiles and the
-            garments you love.
+            Join a community making garment care simpler for African
+            textiles.
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.form}>
           <fieldset className={styles.roleFieldset}>
-            <legend>How will you use AfriWear Care?</legend>
+            <legend>First, choose your account type</legend>
+
+            <p className={styles.roleHint}>
+              Select the option that best describes how you'll use
+              AfriWear Care.
+            </p>
 
             <div className={styles.roleOptions}>
               <label
@@ -118,9 +147,28 @@ function Signup() {
                   checked={formData.role === "USER"}
                   onChange={handleChange}
                 />
-                <span className={styles.roleIcon}>♧</span>
-                <strong>I'm a consumer</strong>
-                <span>Discover garment care guides and scan QR codes.</span>
+
+                <span className={styles.roleIcon} aria-hidden="true">
+                  👕
+                </span>
+
+                <span className={styles.roleTitle}>
+                  User account
+                </span>
+
+                <span className={styles.roleDescription}>
+                  For people who own and wear garments.
+                </span>
+
+                <span className={styles.roleFeatures}>
+                  Scan QR codes · View care guides · Track scan history
+                </span>
+
+                <span className={styles.selection}>
+                  {formData.role === "USER"
+                    ? "✓ Selected"
+                    : "Choose account"}
+                </span>
               </label>
 
               <label
@@ -135,12 +183,36 @@ function Signup() {
                   checked={formData.role === "DESIGNER"}
                   onChange={handleChange}
                 />
-                <span className={styles.roleIcon}>✂</span>
-                <strong>I'm a designer</strong>
-                <span>Share your garments and their care instructions.</span>
+
+                <span className={styles.roleIcon} aria-hidden="true">
+                  ✂️
+                </span>
+
+                <span className={styles.roleTitle}>
+                  Designer account
+                </span>
+
+                <span className={styles.roleDescription}>
+                  For designers and clothing brands.
+                </span>
+
+                <span className={styles.roleFeatures}>
+                  Add garments · Provide care instructions · Create QR
+                  labels
+                </span>
+
+                <span className={styles.selection}>
+                  {formData.role === "DESIGNER"
+                    ? "✓ Selected"
+                    : "Choose account"}
+                </span>
               </label>
             </div>
           </fieldset>
+
+          <div className={styles.formDivider}>
+            <span>Your account details</span>
+          </div>
 
           <label className={styles.field}>
             <span>Full name</span>
@@ -154,6 +226,73 @@ function Signup() {
               required
             />
           </label>
+
+          {formData.role === "DESIGNER" && (
+            <>
+              <div className={styles.formDivider}>
+                <span>Designer and brand details</span>
+              </div>
+
+              <label className={styles.field}>
+                <span>Brand or business name</span>
+                <input
+                  type="text"
+                  name="brandName"
+                  placeholder="e.g. PEACEY's Piece"
+                  value={formData.brandName}
+                  onChange={handleChange}
+                  maxLength={150}
+                  autoComplete="organization"
+                  required
+                />
+              </label>
+
+              <label className={styles.field}>
+                <span>
+                  Phone number <small>(optional)</small>
+                </span>
+                <input
+                  type="tel"
+                  name="phoneNumber"
+                  placeholder="Enter your contact number"
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                  maxLength={30}
+                  autoComplete="tel"
+                />
+              </label>
+
+              <div className={styles.locationFields}>
+                <label className={styles.field}>
+                  <span>City</span>
+                  <input
+                    type="text"
+                    name="city"
+                    placeholder="e.g. Benin City"
+                    value={formData.city}
+                    onChange={handleChange}
+                    maxLength={100}
+                    autoComplete="address-level2"
+                    required
+                  />
+                </label>
+
+                <label className={styles.field}>
+                  <span>State</span>
+                  <input
+                    type="text"
+                    name="state"
+                    placeholder="e.g. Edo"
+                    value={formData.state}
+                    onChange={handleChange}
+                    maxLength={100}
+                    autoComplete="address-level1"
+                    required
+                  />
+                </label>
+              </div>
+            </>
+          )}
 
           <label className={styles.field}>
             <span>Email address</span>
@@ -180,6 +319,7 @@ function Signup() {
               minLength={8}
               required
             />
+            <small>Use at least 8 characters.</small>
           </label>
 
           <label className={styles.field}>
@@ -198,9 +338,11 @@ function Signup() {
           {message && (
             <p
               className={`${styles.message} ${
-                messageType === "success" ? styles.success : styles.error
+                messageType === "success"
+                  ? styles.success
+                  : styles.error
               }`}
-              role="status"
+              role="alert"
             >
               {message}
             </p>
@@ -212,6 +354,7 @@ function Signup() {
             disabled={loading}
           >
             {loading ? "Creating account..." : "Create account"}
+            {!loading && <span aria-hidden="true"> →</span>}
           </button>
         </form>
 
@@ -220,7 +363,8 @@ function Signup() {
         </p>
 
         <p className={styles.footer}>
-          By creating an account, you agree to use AfriWear Care responsibly.
+          By creating an account, you agree to use AfriWear Care
+          responsibly.
         </p>
       </section>
     </main>
